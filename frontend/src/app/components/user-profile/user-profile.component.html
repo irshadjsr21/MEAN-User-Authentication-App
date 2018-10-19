@@ -1,0 +1,16 @@
+<div *ngIf="user" class="card">
+  <h1 class="card-header text-center">User Details</h1>
+  <div class="card-body">
+    <ul class="list-group">
+      <li class="list-group-item">Firstname : {{user.firstname}}</li>
+      <li class="list-group-item">Lastname : {{user.lastname}}</li>
+      <li class="list-group-item">Email : {{user.email}}</li>
+      <li class="list-group-item">Created At : {{user.createdAt}}</li>
+    </ul>
+  </div>
+</div>
+<div *ngIf="!user">
+  No User Found.
+  <br>
+  Please Login
+</div>

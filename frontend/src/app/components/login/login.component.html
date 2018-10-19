@@ -1,0 +1,37 @@
+<h1>Login</h1>
+
+<form [formGroup]="loginForm" class="form-group mt-4" (ngSubmit)="onSubmit()">
+  
+  <div class="row mb-2">
+      <div class="col-2">
+        <label for="email"> Email : </label>
+      </div>
+      <div class="col-6">
+        <input type="text" formControlName="email" class="form-control" name="email" [class.invalid-form]="f.email.errors && (f.email.dirty || f.email.touched)">
+      </div>
+      <div *ngIf="f.email.errors  && (f.email.dirty || f.email.touched)" class="col-4 text-danger">
+        <div *ngIf="f.email.errors.required">
+          Email is required
+        </div>
+        <div *ngIf="f.email.errors.email">
+          Enter a Valid Email
+        </div>
+      </div>
+  </div>
+
+  <div class="row">
+      <div class="col-2">
+        <label for="password"> Password : </label>
+      </div>
+      <div class="col-6">
+        <input type="password" formControlName="password" class="form-control" name="password" [class.invalid-form]="f.password.errors && (f.password.dirty || f.password.touched)">
+      </div>
+      <div *ngIf="f.password.errors" class="col-4 text-danger">
+        <div *ngIf="f.password.errors.required && (f.password.dirty || f.password.touched)">
+          Password is required
+        </div>
+      </div>
+  </div>
+  
+  <input type="submit" value="Submit" [disabled]="!loginForm.valid" class="btn btn-primary mt-4">
+</form>

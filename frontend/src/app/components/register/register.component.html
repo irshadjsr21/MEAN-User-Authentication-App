@@ -1,0 +1,59 @@
+<h1>Register</h1>
+
+<form [formGroup]="registerForm" class="form-group mt-4" (ngSubmit)="onSubmit()">
+  <div class="row mb-2">
+    <div class="col-2">
+      <label for="firstname"> First Name : </label>
+    </div>
+    <div class="col-6">
+      <input type="text" formControlName="firstname" class="form-control" name="firstname" [class.invalid-form]="f.firstname.errors && (f.firstname.dirty || f.firstname.touched)">
+    </div>
+    <div *ngIf="f.firstname.errors && (f.firstname.dirty || f.firstname.touched)" class="col-4 text-danger">
+      <div *ngIf="f.firstname.errors.required ">
+          First Name is required
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-2">
+      <label for="lastname"> Last Name : </label>
+    </div>
+    <div class="col-6">
+      <input type="text" formControlName="lastname" class="form-control" name="lastname">
+    </div>
+  </div>
+  
+  <div class="row mb-2">
+      <div class="col-2">
+        <label for="email"> Email : </label>
+      </div>
+      <div class="col-6">
+        <input type="text" formControlName="email" class="form-control" name="email" [class.invalid-form]="f.email.errors && (f.email.dirty || f.email.touched)">
+      </div>
+      <div *ngIf="f.email.errors  && (f.email.dirty || f.email.touched)" class="col-4 text-danger">
+        <div *ngIf="f.email.errors.required">
+          Email is required
+        </div>
+        <div *ngIf="f.email.errors.email">
+          Enter a Valid Email
+        </div>
+      </div>
+  </div>
+
+  <div class="row">
+      <div class="col-2">
+        <label for="password"> Password : </label>
+      </div>
+      <div class="col-6">
+        <input type="password" formControlName="password" class="form-control" name="password" [class.invalid-form]="f.password.errors && (f.password.dirty || f.password.touched)">
+      </div>
+      <div *ngIf="f.password.errors" class="col-4 text-danger">
+        <div *ngIf="f.password.errors.required && (f.password.dirty || f.password.touched)">
+          Password is required
+        </div>
+      </div>
+  </div>
+  
+  <input type="submit" value="Submit" [disabled]="!registerForm.valid" class="btn btn-primary mt-4">
+</form>
