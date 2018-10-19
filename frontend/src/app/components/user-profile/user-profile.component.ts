@@ -19,7 +19,6 @@ export class UserProfileComponent implements OnInit {
     this.usersService.getUserDetails().subscribe(
       result => {
         this.user = result['user'];
-        console.log(this.user);
       },
       error => {
         const message = new Message([error.error.msg], true, 4000, 'danger');
