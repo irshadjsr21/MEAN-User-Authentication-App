@@ -53,7 +53,7 @@ module.exports = {
             sub: req.user._id
         }, process.env.JWT_KEY,
         {
-            expiresIn: "1m"  
+            expiresIn: "20m"  
         },
         (err, token)=>{
             if(err){
